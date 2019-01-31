@@ -6,6 +6,12 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Debug\Dumper;
 use Illuminate\Contracts\Support\Htmlable;
 
+if (!function_exists('is_countable')) {
+    function is_countable($value) {
+        return (is_array($value) || $value instanceof Countable);
+    }
+}
+
 if (! function_exists('append_config')) {
     /**
      * Assign high numeric IDs to a config item to force appending.
